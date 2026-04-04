@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1010778C90BBC6CEE1115816 /* TodoistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6384D70E96DA00D0D6A8A77 /* TodoistService.swift */; };
+		1BC9A45B577CCCB42913C241 /* AnthropicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B31023167D6083D8C4F8A /* AnthropicModels.swift */; };
+		20AC188B46DE13100006FDB6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D849C93D378C5E55955988 /* SettingsView.swift */; };
+		21EF7210B3021271D7D1B217 /* MenuBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC742E805C3EDEA911A42D0 /* MenuBarManager.swift */; };
+		2698D1CD461205F96A2B7656 /* ClaudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D9DA38D7FA3300217AA127 /* ClaudeService.swift */; };
+		3B140D0FD849445F2B800F34 /* InputWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A485B1D54B1FCE5041580BC /* InputWindowController.swift */; };
+		3C2474D845A36918A7D22655 /* ClaudeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFB0A9F7D06C878F4B9842 /* ClaudeServiceTests.swift */; };
+		3CE20BA1CC8A8CB644A15BCC /* ObsidianServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2694006617F3F98F475B165D /* ObsidianServiceTests.swift */; };
+		58B08E2D6A9C4CA40990DD66 /* ClaudeMenueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8F349A7E10D350E7E9DDD /* ClaudeMenueApp.swift */; };
+		5A163DA34F93BACFDCDADD8B /* ObsidianService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4B98040445F15FBDF0A97E /* ObsidianService.swift */; };
+		65D4C6DB6E18A5063FBBCDD2 /* AnthropicModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F389A98582843786A5D9BBE /* AnthropicModelsTests.swift */; };
+		8180F41F1726FDF7B3A3F020 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36551F82F8789FAB47625D16 /* TestHelpers.swift */; };
+		9B076DEA35066D93CBA5A734 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04109260263F4C7BF80F0DF5 /* InputView.swift */; };
+		B0A45F0BBEE4855DB2A3DF2B /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C595C7956A8BE9B5EA91FB3 /* HotKeyManager.swift */; };
+		B557F3034444A69A45646DDF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06957E2662E4C183E878D2C1 /* SettingsStore.swift */; };
+		C0695EBCFBD754E0056506EC /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4FA9DEB46A10DBC6E1A6D /* SettingsStoreTests.swift */; };
+		C866C2ECBEF8FC1F8A8225FA /* ClaudeMenueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FE28B0B466962C07B1833 /* ClaudeMenueTests.swift */; };
+		D59433EA4E1500ED9ECE6DDD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8099F75703C274B27920C2 /* NotificationService.swift */; };
+		DB3FB134289489D278765741 /* ToolCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC55DE7710D7D091A38DF /* ToolCall.swift */; };
+		DF54CD644FE6FB7156F13438 /* TodoistServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ADF2551D9BCBB1BD933C29 /* TodoistServiceTests.swift */; };
+		E7D1A8983D97526DC2340C94 /* MarkdownTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAFB7BEC388C02E6CBCA9F4 /* MarkdownTextEditor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5EF1CB763CF9ACD3B886DDAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDDE03EF08B5958B0096625D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2997164F2EFF0FBEA73FD182;
+			remoteInfo = ClaudeMenue;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04109260263F4C7BF80F0DF5 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		06957E2662E4C183E878D2C1 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		0C4B98040445F15FBDF0A97E /* ObsidianService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsidianService.swift; sourceTree = "<group>"; };
+		0CC8F349A7E10D350E7E9DDD /* ClaudeMenueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeMenueApp.swift; sourceTree = "<group>"; };
+		0FDEEAE7C6CCBC19D5BBD0D9 /* ClaudeMenue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudeMenue.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19D9DA38D7FA3300217AA127 /* ClaudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeService.swift; sourceTree = "<group>"; };
+		1D1FE28B0B466962C07B1833 /* ClaudeMenueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeMenueTests.swift; sourceTree = "<group>"; };
+		1EAFB7BEC388C02E6CBCA9F4 /* MarkdownTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextEditor.swift; sourceTree = "<group>"; };
+		2694006617F3F98F475B165D /* ObsidianServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsidianServiceTests.swift; sourceTree = "<group>"; };
+		28ADF2551D9BCBB1BD933C29 /* TodoistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistServiceTests.swift; sourceTree = "<group>"; };
+		36551F82F8789FAB47625D16 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		468B31023167D6083D8C4F8A /* AnthropicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicModels.swift; sourceTree = "<group>"; };
+		4C595C7956A8BE9B5EA91FB3 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
+		4CC742E805C3EDEA911A42D0 /* MenuBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarManager.swift; sourceTree = "<group>"; };
+		4D95DB349665F7F6C2313414 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		5F389A98582843786A5D9BBE /* AnthropicModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicModelsTests.swift; sourceTree = "<group>"; };
+		75754242335EDFD4DB892F8A /* ClaudeMenueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaudeMenueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E8099F75703C274B27920C2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		84B4FA9DEB46A10DBC6E1A6D /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
+		8A485B1D54B1FCE5041580BC /* InputWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWindowController.swift; sourceTree = "<group>"; };
+		A3D849C93D378C5E55955988 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AACFB0A9F7D06C878F4B9842 /* ClaudeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeServiceTests.swift; sourceTree = "<group>"; };
+		AE52D6A69B671B43A89BB9A4 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		BDFBA4B5DB1BBF908FB02290 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		C071DB0CCBD74C1399B76324 /* ClaudeMenue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClaudeMenue.entitlements; sourceTree = "<group>"; };
+		C47D191E21A89304FFFC92A4 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		C6384D70E96DA00D0D6A8A77 /* TodoistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistService.swift; sourceTree = "<group>"; };
+		D8545CFA21A1A5CC52EEFEE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EF0FC55DE7710D7D091A38DF /* ToolCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCall.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00ABCFB6FA8E9A5AB33C415F /* ClaudeMenue */ = {
+			isa = PBXGroup;
+			children = (
+				AA084607B2D99D5F554037BA /* App */,
+				B9A1BEC24EE81EA07A6C7F87 /* Models */,
+				98A8C4296308BB943385E7F8 /* Resources */,
+				8E79BCB6392F8B0C67A7DE65 /* Services */,
+				DA1F97A2985CC13882D1DA21 /* Settings */,
+				DE01D4BE2567C505D301D402 /* Window */,
+			);
+			path = ClaudeMenue;
+			sourceTree = "<group>";
+		};
+		3FEB376092E52A379C61DF76 /* ClaudeMenueTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F389A98582843786A5D9BBE /* AnthropicModelsTests.swift */,
+				1D1FE28B0B466962C07B1833 /* ClaudeMenueTests.swift */,
+				AACFB0A9F7D06C878F4B9842 /* ClaudeServiceTests.swift */,
+				2694006617F3F98F475B165D /* ObsidianServiceTests.swift */,
+				84B4FA9DEB46A10DBC6E1A6D /* SettingsStoreTests.swift */,
+				36551F82F8789FAB47625D16 /* TestHelpers.swift */,
+				28ADF2551D9BCBB1BD933C29 /* TodoistServiceTests.swift */,
+			);
+			path = ClaudeMenueTests;
+			sourceTree = "<group>";
+		};
+		41D27C9E8F18E6685D266EEB = {
+			isa = PBXGroup;
+			children = (
+				00ABCFB6FA8E9A5AB33C415F /* ClaudeMenue */,
+				3FEB376092E52A379C61DF76 /* ClaudeMenueTests */,
+				744513277007B91FE7BA88BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		744513277007B91FE7BA88BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FDEEAE7C6CCBC19D5BBD0D9 /* ClaudeMenue.app */,
+				75754242335EDFD4DB892F8A /* ClaudeMenueTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E79BCB6392F8B0C67A7DE65 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AE52D6A69B671B43A89BB9A4 /* .gitkeep */,
+				19D9DA38D7FA3300217AA127 /* ClaudeService.swift */,
+				7E8099F75703C274B27920C2 /* NotificationService.swift */,
+				0C4B98040445F15FBDF0A97E /* ObsidianService.swift */,
+				C6384D70E96DA00D0D6A8A77 /* TodoistService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		98A8C4296308BB943385E7F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C071DB0CCBD74C1399B76324 /* ClaudeMenue.entitlements */,
+				D8545CFA21A1A5CC52EEFEE6 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA084607B2D99D5F554037BA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0CC8F349A7E10D350E7E9DDD /* ClaudeMenueApp.swift */,
+				4C595C7956A8BE9B5EA91FB3 /* HotKeyManager.swift */,
+				4CC742E805C3EDEA911A42D0 /* MenuBarManager.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B9A1BEC24EE81EA07A6C7F87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D95DB349665F7F6C2313414 /* .gitkeep */,
+				468B31023167D6083D8C4F8A /* AnthropicModels.swift */,
+				EF0FC55DE7710D7D091A38DF /* ToolCall.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA1F97A2985CC13882D1DA21 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BDFBA4B5DB1BBF908FB02290 /* .gitkeep */,
+				06957E2662E4C183E878D2C1 /* SettingsStore.swift */,
+				A3D849C93D378C5E55955988 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DE01D4BE2567C505D301D402 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				C47D191E21A89304FFFC92A4 /* .gitkeep */,
+				04109260263F4C7BF80F0DF5 /* InputView.swift */,
+				8A485B1D54B1FCE5041580BC /* InputWindowController.swift */,
+				1EAFB7BEC388C02E6CBCA9F4 /* MarkdownTextEditor.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2997164F2EFF0FBEA73FD182 /* ClaudeMenue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 990B770BE8B670137DC490BB /* Build configuration list for PBXNativeTarget "ClaudeMenue" */;
+			buildPhases = (
+				A860CEF48557B092AADDE07F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClaudeMenue;
+			packageProductDependencies = (
+			);
+			productName = ClaudeMenue;
+			productReference = 0FDEEAE7C6CCBC19D5BBD0D9 /* ClaudeMenue.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F5638869F55668D05CAAD093 /* ClaudeMenueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45DACAFC8B10E2F940271C7A /* Build configuration list for PBXNativeTarget "ClaudeMenueTests" */;
+			buildPhases = (
+				C2FA6E728866F09A72AE8106 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66CB963773203A906B426348 /* PBXTargetDependency */,
+			);
+			name = ClaudeMenueTests;
+			packageProductDependencies = (
+			);
+			productName = ClaudeMenueTests;
+			productReference = 75754242335EDFD4DB892F8A /* ClaudeMenueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDDE03EF08B5958B0096625D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					2997164F2EFF0FBEA73FD182 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					F5638869F55668D05CAAD093 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2C8B1FDFEC44354E184F113D /* Build configuration list for PBXProject "ClaudeMenue" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 41D27C9E8F18E6685D266EEB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 744513277007B91FE7BA88BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2997164F2EFF0FBEA73FD182 /* ClaudeMenue */,
+				F5638869F55668D05CAAD093 /* ClaudeMenueTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A860CEF48557B092AADDE07F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BC9A45B577CCCB42913C241 /* AnthropicModels.swift in Sources */,
+				58B08E2D6A9C4CA40990DD66 /* ClaudeMenueApp.swift in Sources */,
+				2698D1CD461205F96A2B7656 /* ClaudeService.swift in Sources */,
+				B0A45F0BBEE4855DB2A3DF2B /* HotKeyManager.swift in Sources */,
+				9B076DEA35066D93CBA5A734 /* InputView.swift in Sources */,
+				3B140D0FD849445F2B800F34 /* InputWindowController.swift in Sources */,
+				E7D1A8983D97526DC2340C94 /* MarkdownTextEditor.swift in Sources */,
+				21EF7210B3021271D7D1B217 /* MenuBarManager.swift in Sources */,
+				D59433EA4E1500ED9ECE6DDD /* NotificationService.swift in Sources */,
+				5A163DA34F93BACFDCDADD8B /* ObsidianService.swift in Sources */,
+				B557F3034444A69A45646DDF /* SettingsStore.swift in Sources */,
+				20AC188B46DE13100006FDB6 /* SettingsView.swift in Sources */,
+				1010778C90BBC6CEE1115816 /* TodoistService.swift in Sources */,
+				DB3FB134289489D278765741 /* ToolCall.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2FA6E728866F09A72AE8106 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65D4C6DB6E18A5063FBBCDD2 /* AnthropicModelsTests.swift in Sources */,
+				C866C2ECBEF8FC1F8A8225FA /* ClaudeMenueTests.swift in Sources */,
+				3C2474D845A36918A7D22655 /* ClaudeServiceTests.swift in Sources */,
+				3CE20BA1CC8A8CB644A15BCC /* ObsidianServiceTests.swift in Sources */,
+				C0695EBCFBD754E0056506EC /* SettingsStoreTests.swift in Sources */,
+				8180F41F1726FDF7B3A3F020 /* TestHelpers.swift in Sources */,
+				DF54CD644FE6FB7156F13438 /* TodoistServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66CB963773203A906B426348 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2997164F2EFF0FBEA73FD182 /* ClaudeMenue */;
+			targetProxy = 5EF1CB763CF9ACD3B886DDAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5261BEEAB183D92450859302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8403B424AD016C8DE370F752 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClaudeMenue/Resources/ClaudeMenue.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ClaudeMenue/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.hoeferconsulting.ClaudeMenue;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		C19DC0CE883DD1FEF4D18ECE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DA61A253B6C65E21590B00DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClaudeMenue/Resources/ClaudeMenue.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ClaudeMenue/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.hoeferconsulting.ClaudeMenue;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		EDAAF5F7B98C394E240B597B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.hoeferconsulting.ClaudeMenueTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClaudeMenue.app/Contents/MacOS/ClaudeMenue";
+			};
+			name = Debug;
+		};
+		EEE7E2F57818E9F37C3E843A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.hoeferconsulting.ClaudeMenueTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClaudeMenue.app/Contents/MacOS/ClaudeMenue";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C8B1FDFEC44354E184F113D /* Build configuration list for PBXProject "ClaudeMenue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C19DC0CE883DD1FEF4D18ECE /* Debug */,
+				5261BEEAB183D92450859302 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		45DACAFC8B10E2F940271C7A /* Build configuration list for PBXNativeTarget "ClaudeMenueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDAAF5F7B98C394E240B597B /* Debug */,
+				EEE7E2F57818E9F37C3E843A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		990B770BE8B670137DC490BB /* Build configuration list for PBXNativeTarget "ClaudeMenue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8403B424AD016C8DE370F752 /* Debug */,
+				DA61A253B6C65E21590B00DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CDDE03EF08B5958B0096625D /* Project object */;
+}

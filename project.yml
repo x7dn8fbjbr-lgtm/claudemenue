@@ -1,0 +1,40 @@
+name: ClaudeMenue
+options:
+  bundleIdPrefix: de.hoeferconsulting
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+packages: {}
+
+targets:
+  ClaudeMenue:
+    type: application
+    platform: macOS
+    sources:
+      - path: ClaudeMenue
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: de.hoeferconsulting.ClaudeMenue
+        INFOPLIST_FILE: ClaudeMenue/Resources/Info.plist
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        CODE_SIGN_ENTITLEMENTS: ClaudeMenue/Resources/ClaudeMenue.entitlements
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+
+  ClaudeMenueTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: ClaudeMenueTests
+    dependencies:
+      - target: ClaudeMenue
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
