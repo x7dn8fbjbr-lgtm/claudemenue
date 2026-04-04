@@ -3,9 +3,7 @@ import Foundation
 class ObsidianService {
     let vaultPath: URL
 
-    // Default: standard iCloud Obsidian vault location. Adjust to your vault path.
-    init(vaultPath: URL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault")) {
+    init(vaultPath: URL = SettingsStore.shared.obsidianVaultURL) {
         self.vaultPath = vaultPath
     }
 

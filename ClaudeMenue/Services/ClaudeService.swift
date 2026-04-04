@@ -10,21 +10,26 @@ class ClaudeService {
     private let apiURL = URL(string: "https://api.anthropic.com/v1/messages")!
     private let model = "claude-sonnet-4-6"
 
-    // Customize this system prompt with your own name, projects, and known Obsidian filenames.
-    // The more context you give Claude about your projects, the better it routes your thoughts.
-    private let systemPrompt = """
-    You are the personal assistant of [YOUR NAME].
-    [YOUR NAME] sends you short thoughts, ideas, or tasks.
-    You decide autonomously what to do with them and call the appropriate tools.
-    Do NOT respond with text — only with tool calls.
+    private var systemPrompt: String {
+        let s = SettingsStore.shared
+        let name = s.userName.isEmpty ? "the user" : s.userName
+        let context = s.projectContext.isEmpty ? "(no projects configured)" : s.projectContext
+        let inbox = s.obsidianInboxFolder
+        let known = s.knownObsidianFiles.isEmpty ? "none" : s.knownObsidianFiles
+        return """
+        You are the personal assistant of \(name).
+        \(name) sends you short thoughts, ideas, or tasks.
+        You decide autonomously what to do with them and call the appropriate tools.
+        Do NOT respond with text — only with tool calls.
 
-    Projects of [YOUR NAME]:
-    - Work: [Your work projects, e.g. "Acme Corp, Project Alpha"]
-    - Personal: [Your personal projects, e.g. "Home renovation, Family history"]
-    - Obsidian Vault: ~/path/to/your/obsidian/vault/
-    - New notes always go in: 00_INBOX/
-    - Known filenames for update_obsidian_note: [e.g. "home.md, finances.md, health.md"]
-    """
+        Context about \(name):
+        \(context)
+
+        Obsidian Vault: \(s.obsidianVaultPath)
+        New notes always go in: \(inbox)/
+        Known filenames for update_obsidian_note: \(known)
+        """
+    }
 
     private var tools: [AnthropicTool] {
         [

@@ -7,10 +7,43 @@ class SettingsStore: ObservableObject {
     private let anthropicTag: String
     private let todoistTag: String
     private let service = "de.hoeferconsulting.ClaudeMenue"
+    private let defaults = UserDefaults.standard
 
     init(keychainPrefix: String = "de.hoeferconsulting.ClaudeMenue") {
         anthropicTag = "\(keychainPrefix).anthropicKey"
         todoistTag = "\(keychainPrefix).todoistToken"
+    }
+
+    // MARK: - Persönlicher Kontext (UserDefaults)
+
+    var userName: String {
+        get { defaults.string(forKey: "userName") ?? "" }
+        set { defaults.set(newValue, forKey: "userName") }
+    }
+
+    var projectContext: String {
+        get { defaults.string(forKey: "projectContext") ?? "" }
+        set { defaults.set(newValue, forKey: "projectContext") }
+    }
+
+    var obsidianVaultPath: String {
+        get { defaults.string(forKey: "obsidianVaultPath") ?? "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault" }
+        set { defaults.set(newValue, forKey: "obsidianVaultPath") }
+    }
+
+    var knownObsidianFiles: String {
+        get { defaults.string(forKey: "knownObsidianFiles") ?? "" }
+        set { defaults.set(newValue, forKey: "knownObsidianFiles") }
+    }
+
+    var obsidianInboxFolder: String {
+        get { defaults.string(forKey: "obsidianInboxFolder") ?? "00_INBOX" }
+        set { defaults.set(newValue, forKey: "obsidianInboxFolder") }
+    }
+
+    var obsidianVaultURL: URL {
+        let raw = obsidianVaultPath.replacingOccurrences(of: "~", with: NSHomeDirectory())
+        return URL(fileURLWithPath: raw)
     }
 
     var anthropicApiKey: String? {
