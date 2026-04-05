@@ -97,7 +97,7 @@ struct SettingsView: View {
                         .frame(minHeight: 120)
                         .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color(nsColor: .separatorColor)))
 
-                    HStack {
+                    HStack(spacing: 12) {
                         Text("Beschreibe deine Projekte, Themen und Schwerpunkte.")
                             .font(.caption).foregroundColor(.secondary)
                         Spacer()
@@ -105,7 +105,16 @@ struct SettingsView: View {
                             ProgressView().scaleEffect(0.7)
                             Text("Generiere…").font(.caption).foregroundColor(.secondary)
                         } else {
-                            Button("✦ Von Claude generieren lassen") {
+                            Button("↓ Aus CLAUDE.md") {
+                                Task { await importFromClaudeMd() }
+                            }
+                            .buttonStyle(.borderless)
+                            .foregroundColor(.accentColor)
+                            .font(.caption)
+                            .help("CLAUDE.md-Dateien aus ~/Claude/ einlesen und Kontext generieren")
+                            .disabled(anthropicKey.isEmpty && (SettingsStore.shared.anthropicApiKey ?? "").isEmpty)
+
+                            Button("✦ Von Claude generieren") {
                                 Task { await generateContext() }
                             }
                             .buttonStyle(.borderless)
@@ -159,6 +168,57 @@ struct SettingsView: View {
         }
     }
 
+    private func importFromClaudeMd() async {
+        let key = anthropicKey.isEmpty ? (SettingsStore.shared.anthropicApiKey ?? "") : anthropicKey
+        guard !key.isEmpty else { return }
+
+        isGenerating = true
+        generateError = nil
+        defer { isGenerating = false }
+
+        // Alle CLAUDE.md Dateien in ~/Claude/ einsammeln (max. 3 Ebenen tief)
+        let claudeDir = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent("Claude")
+        var collected: [(path: String, content: String)] = []
+
+        if let enumerator = FileManager.default.enumerator(
+            at: claudeDir,
+            includingPropertiesForKeys: nil,
+            options: [.skipsHiddenFiles]
+        ) {
+            for case let url as URL in enumerator {
+                // Maximal 3 Verzeichnisebenen tief
+                let relative = url.path.replacingOccurrences(of: claudeDir.path + "/", with: "")
+                guard relative.components(separatedBy: "/").count <= 3 else { continue }
+                guard url.lastPathComponent == "CLAUDE.md" else { continue }
+                if let content = try? String(contentsOf: url, encoding: .utf8) {
+                    collected.append((path: relative, content: content))
+                }
+            }
+        }
+
+        guard !collected.isEmpty else {
+            await MainActor.run { generateError = "Keine CLAUDE.md-Dateien in ~/Claude/ gefunden." }
+            return
+        }
+
+        let combined = collected.map { "### \($0.path)\n\($0.content)" }.joined(separator: "\n\n---\n\n")
+
+        let prompt = """
+        Ich habe folgende CLAUDE.md-Dateien aus meinem Claude-Arbeitsordner. \
+        Sie beschreiben meine Projekte, meinen Hintergrund und meinen Kontext.
+
+        Erstelle daraus einen kompakten, strukturierten Kontext-Text (max. 300 Wörter) \
+        der als System-Prompt für meinen persönlichen Assistenten geeignet ist. \
+        Fokus auf: Wer bin ich, welche Projekte laufen, welche Themen sind wichtig. \
+        Keine Navigationshinweise oder technische Details über Claude selbst. \
+        Auf Deutsch, in Stichpunkten.
+
+        \(combined)
+        """
+
+        await callClaude(prompt: prompt, apiKey: key)
+    }
+
     private func generateContext() async {
         let key = anthropicKey.isEmpty ? (SettingsStore.shared.anthropicApiKey ?? "") : anthropicKey
         guard !key.isEmpty else { return }
@@ -175,24 +235,26 @@ struct SettingsView: View {
         Hilf mir, eine prägnante Beschreibung meiner Projekte und Themen zu erstellen \
         für \(name).\(existing)
 
-        Erstelle eine strukturierte Liste meiner wahrscheinlichen Projekte und Themen \
-        (Beruf, Privat, Hobbys, laufende Aufgaben). Wenn ich noch keinen Kontext angegeben habe, \
-        frage nach den wichtigsten Bereichen und gib Beispiele. \
-        Antworte auf Deutsch, knapp und strukturiert.
+        Erstelle eine strukturierte Liste meiner Projekte und Themen \
+        (Beruf, Privat, Hobbys, laufende Aufgaben). \
+        Antworte auf Deutsch, knapp und strukturiert (max. 200 Wörter).
         """
 
+        await callClaude(prompt: prompt, apiKey: key)
+    }
+
+    private func callClaude(prompt: String, apiKey: String) async {
         let body: [String: Any] = [
             "model": "claude-sonnet-4-6",
             "max_tokens": 1024,
             "messages": [["role": "user", "content": prompt]]
         ]
-
         guard let url = URL(string: "https://api.anthropic.com/v1/messages"),
               let bodyData = try? JSONSerialization.data(withJSONObject: body) else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue(key, forHTTPHeaderField: "x-api-key")
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.setValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = bodyData
