@@ -6,14 +6,14 @@ class SettingsWindowController: NSWindowController {
 
     private init() {
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 520, height: 540),
+            contentRect: NSRect(x: 0, y: 0, width: 520, height: 580),
             styleMask: [.titled, .closable, .resizable],
             backing: .buffered,
             defer: false
         )
         window.title = "ClaudeMenue — Einstellungen"
         window.isReleasedWhenClosed = false
-        window.minSize = NSSize(width: 480, height: 480)
+        window.minSize = NSSize(width: 480, height: 500)
         super.init(window: window)
         window.contentView = NSHostingView(rootView: SettingsView())
         window.center()
@@ -23,17 +23,16 @@ class SettingsWindowController: NSWindowController {
 }
 
 struct SettingsView: View {
-    // API Keys
     @State private var anthropicKey: String = ""
     @State private var todoistToken: String = ""
-    // Kontext
     @State private var userName: String = ""
     @State private var projectContext: String = ""
     @State private var obsidianVaultPath: String = ""
     @State private var knownObsidianFiles: String = ""
     @State private var obsidianInboxFolder: String = ""
-
     @State private var savedFeedback = false
+    @State private var isGenerating = false
+    @State private var generateError: String? = nil
 
     var body: some View {
         VStack(spacing: 0) {
@@ -47,8 +46,7 @@ struct SettingsView: View {
             HStack {
                 if savedFeedback {
                     Label("Gespeichert", systemImage: "checkmark.circle.fill")
-                        .foregroundColor(.green)
-                        .font(.subheadline)
+                        .foregroundColor(.green).font(.subheadline)
                 }
                 Spacer()
                 Button("Speichern") { save() }
@@ -63,57 +61,92 @@ struct SettingsView: View {
     // MARK: - API Tab
 
     private var apiTab: some View {
-        Form {
-            Section {
-                SecureField("sk-ant-…", text: $anthropicKey)
-                Text("Erstellen unter console.anthropic.com → API Keys")
-                    .font(.caption).foregroundColor(.secondary)
-            } header: { Text("Anthropic API Key") }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                fieldBlock(label: "Anthropic API Key") {
+                    SecureField("sk-ant-…", text: $anthropicKey)
+                        .textFieldStyle(.roundedBorder)
+                    Text("Erstellen unter console.anthropic.com → API Keys")
+                        .font(.caption).foregroundColor(.secondary)
+                }
 
-            Section {
-                SecureField("Token…", text: $todoistToken)
-                Text("todoist.com → Einstellungen → Integrationen → API Token")
-                    .font(.caption).foregroundColor(.secondary)
-            } header: { Text("Todoist API Token") }
+                fieldBlock(label: "Todoist API Token") {
+                    SecureField("Token…", text: $todoistToken)
+                        .textFieldStyle(.roundedBorder)
+                    Text("todoist.com → Einstellungen → Integrationen → API Token")
+                        .font(.caption).foregroundColor(.secondary)
+                }
+            }
+            .padding(20)
         }
-        .formStyle(.grouped)
-        .padding(.bottom, 8)
     }
 
     // MARK: - Kontext Tab
 
     private var contextTab: some View {
-        Form {
-            Section {
-                TextField("z.B. Max Mustermann", text: $userName)
-            } header: { Text("Dein Name") }
-
-            Section {
-                TextEditor(text: $projectContext)
-                    .font(.system(size: 13))
-                    .frame(minHeight: 100)
-                Text("Beschreibe deine Projekte, Themen und Schwerpunkte. Je mehr Kontext, desto besser entscheidet Claude.")
-                    .font(.caption).foregroundColor(.secondary)
-            } header: { Text("Projekte & Kontext") }
-
-            Section {
-                HStack {
-                    TextField("~/Library/Mobile Documents/…", text: $obsidianVaultPath)
-                    Button("Auswählen…") { browseVault() }
-                        .controlSize(.small)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                fieldBlock(label: "Dein Name") {
+                    TextField("Max Mustermann", text: $userName)
+                        .textFieldStyle(.roundedBorder)
                 }
-                TextField("00_INBOX", text: $obsidianInboxFolder)
-                    .help("Ordner für neue Notizen")
-                TextField("datei1.md, datei2.md, …", text: $knownObsidianFiles)
-                Text("Bekannte Dateinamen, damit Claude bestehende Notizen ergänzen kann.")
-                    .font(.caption).foregroundColor(.secondary)
-            } header: { Text("Obsidian") }
+
+                fieldBlock(label: "Projekte & Kontext") {
+                    TextEditor(text: $projectContext)
+                        .font(.system(size: 13))
+                        .frame(minHeight: 120)
+                        .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color(nsColor: .separatorColor)))
+
+                    HStack {
+                        Text("Beschreibe deine Projekte, Themen und Schwerpunkte.")
+                            .font(.caption).foregroundColor(.secondary)
+                        Spacer()
+                        if isGenerating {
+                            ProgressView().scaleEffect(0.7)
+                            Text("Generiere…").font(.caption).foregroundColor(.secondary)
+                        } else {
+                            Button("✦ Von Claude generieren lassen") {
+                                Task { await generateContext() }
+                            }
+                            .buttonStyle(.borderless)
+                            .foregroundColor(.accentColor)
+                            .font(.caption)
+                            .disabled(anthropicKey.isEmpty && (SettingsStore.shared.anthropicApiKey ?? "").isEmpty)
+                        }
+                    }
+                    if let err = generateError {
+                        Text(err).font(.caption).foregroundColor(.red)
+                    }
+                }
+
+                fieldBlock(label: "Obsidian") {
+                    HStack {
+                        TextField("Vault-Pfad", text: $obsidianVaultPath)
+                            .textFieldStyle(.roundedBorder)
+                        Button("Auswählen…") { browseVault() }
+                            .controlSize(.small)
+                    }
+                    TextField("Inbox-Ordner (Standard: 00_INBOX)", text: $obsidianInboxFolder)
+                        .textFieldStyle(.roundedBorder)
+                    TextField("Bekannte Dateinamen: datei1.md, datei2.md, …", text: $knownObsidianFiles)
+                        .textFieldStyle(.roundedBorder)
+                    Text("Bekannte Dateinamen helfen Claude, bestehende Notizen zu ergänzen statt neue zu erstellen.")
+                        .font(.caption).foregroundColor(.secondary)
+                }
+            }
+            .padding(20)
         }
-        .formStyle(.grouped)
-        .padding(.bottom, 8)
     }
 
-    // MARK: - Aktionen
+    // MARK: - Hilfsfunktionen
+
+    @ViewBuilder
+    private func fieldBlock<Content: View>(label: String, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(label).font(.headline)
+            content()
+        }
+    }
 
     private func browseVault() {
         let panel = NSOpenPanel()
@@ -123,6 +156,58 @@ struct SettingsView: View {
         panel.prompt = "Vault auswählen"
         if panel.runModal() == .OK, let url = panel.url {
             obsidianVaultPath = url.path
+        }
+    }
+
+    private func generateContext() async {
+        let key = anthropicKey.isEmpty ? (SettingsStore.shared.anthropicApiKey ?? "") : anthropicKey
+        guard !key.isEmpty else { return }
+
+        isGenerating = true
+        generateError = nil
+        defer { isGenerating = false }
+
+        let name = userName.isEmpty ? "dem Nutzer" : userName
+        let existing = projectContext.isEmpty ? "" : "\n\nBisheriger Kontext (erweitern/verbessern):\n\(projectContext)"
+
+        let prompt = """
+        Ich möchte meinen persönlichen KI-Assistenten mit Kontext über mich füttern. \
+        Hilf mir, eine prägnante Beschreibung meiner Projekte und Themen zu erstellen \
+        für \(name).\(existing)
+
+        Erstelle eine strukturierte Liste meiner wahrscheinlichen Projekte und Themen \
+        (Beruf, Privat, Hobbys, laufende Aufgaben). Wenn ich noch keinen Kontext angegeben habe, \
+        frage nach den wichtigsten Bereichen und gib Beispiele. \
+        Antworte auf Deutsch, knapp und strukturiert.
+        """
+
+        let body: [String: Any] = [
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 1024,
+            "messages": [["role": "user", "content": prompt]]
+        ]
+
+        guard let url = URL(string: "https://api.anthropic.com/v1/messages"),
+              let bodyData = try? JSONSerialization.data(withJSONObject: body) else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue(key, forHTTPHeaderField: "x-api-key")
+        request.setValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = bodyData
+
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let content = (json["content"] as? [[String: Any]])?.first,
+               let text = content["text"] as? String {
+                await MainActor.run { projectContext = text }
+            } else {
+                await MainActor.run { generateError = "Antwort konnte nicht verarbeitet werden." }
+            }
+        } catch {
+            await MainActor.run { generateError = "Fehler: \(error.localizedDescription)" }
         }
     }
 
